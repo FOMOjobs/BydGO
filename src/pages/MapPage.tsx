@@ -94,11 +94,13 @@ export default function MapPage() {
             </div>
           </motion.div>
 
-          <BydgoszczMap 
-            paths={paths}
-            onSelectCheckpoint={handleSelectCheckpoint}
-            selectedPathId={selectedPathId}
-          />
+          <div className="relative z-[40]">
+            <BydgoszczMap 
+              paths={paths}
+              onSelectCheckpoint={handleSelectCheckpoint}
+              selectedPathId={selectedPathId}
+            />
+          </div>
           <PathSelector 
             paths={paths}
             isLoading={isLoading}

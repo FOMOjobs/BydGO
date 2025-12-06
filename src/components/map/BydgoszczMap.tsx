@@ -208,8 +208,8 @@ export function BydgoszczMap({ paths, onSelectCheckpoint, selectedPathId }: Bydg
   return (
     <div 
       ref={containerRef} 
-      className="h-full w-full z-0"
-      style={{ background: '#e5e7eb' }}
+      className="h-full w-full relative"
+      style={{ background: '#e5e7eb', zIndex: 1 }}
     />
   );
 }

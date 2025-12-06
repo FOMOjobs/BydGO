@@ -36,7 +36,7 @@ export function PathSelector({ paths, isLoading, selectedPathId, onSelectPath }:
 
     return (
       <motion.div
-        className="absolute top-20 left-4 right-4 z-30"
+        className="absolute top-20 left-4 right-4 z-[39]"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
@@ -89,11 +89,11 @@ export function PathSelector({ paths, isLoading, selectedPathId, onSelectPath }:
 
   return (
     <motion.div
-      className="absolute bottom-24 left-4 right-4 z-30"
+      className="absolute bottom-24 left-4 right-4 z-[39]"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      <div className="bg-card/95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden">
+      <div className="bg-card/95 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border-0">
         <div className="p-3 border-b border-border flex items-center justify-between">
           <h3 className="font-semibold text-sm">Ścieżki</h3>
         </div>

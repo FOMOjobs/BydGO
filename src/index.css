@@ -201,7 +201,7 @@
 @layer components {
   /* Bottom Navigation */
   .bottom-nav {
-    @apply fixed bottom-0 left-0 right-0 bg-card border-t border-border;
+    @apply fixed bottom-0 left-0 right-0 bg-card;
     @apply flex items-center justify-around h-16 z-50;
     @apply safe-area-inset-bottom;
     box-shadow: 0 -4px 20px hsl(var(--foreground) / 0.05);
@@ -339,6 +339,7 @@
 .leaflet-container {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: hsl(var(--muted));
+  z-index: 1;
 }
 
 .leaflet-popup-content-wrapper {
@@ -350,11 +351,16 @@
 }
 
 .leaflet-popup-pane {
-  z-index: 45 !important;
+  z-index: 700 !important;
 }
 
 .leaflet-marker-pane {
-  z-index: 44 !important;
+  z-index: 600 !important;
+}
+
+/* Ensure popups appear above PathSelector overlay */
+.leaflet-pane {
+  z-index: auto;
 }
 
 /* Custom scrollbar */
