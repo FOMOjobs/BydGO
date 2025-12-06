@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* BydGO! Brand Colors - Historyczne barwy Bydgoszczy */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Głęboki Niebieski (Brda/Kanał Bydgoski) */
+    --primary: 200 100% 30%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 200 100% 85%;
+
+    /* Secondary - Ceglasty Czerwony (Spichrze) */
+    --secondary: 0 60% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 0 60% 85%;
+
+    /* Accent - Ciepły Bursztyn (akcentowy) */
+    --accent: 30 80% 50%;
+    --accent-foreground: 222 47% 11%;
+    --accent-light: 30 80% 90%;
+    
+    /* Success Green */
+    --success: 142 70% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 200 100% 30%;
+
+    /* Pin colors */
+    --pin-field: 200 100% 30%;
+    --pin-virtual: 30 80% 50%;
+    --pin-locked: 215 15% 65%;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.1), 0 2px 4px -2px hsl(222 47% 11% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.1), 0 4px 6px -4px hsl(222 47% 11% / 0.1);
+    --shadow-glow-primary: 0 0 20px hsl(var(--primary) / 0.3);
+    --shadow-glow-success: 0 0 20px hsl(var(--success) / 0.4);
+
+    --radius: 0.75rem;
+    
+    /* Accessibility */
+    --text-scale: 1;
+    --saturation-scale: 1;
+    --line-height: 1.5;
+    --letter-spacing: 0em;
+    --content-scale: 1;
+  }
+
+  .dark {
+    --background: 222 47% 8%;
+    --foreground: 210 20% 98%;
+    --card: 222 47% 12%;
+    --card-foreground: 210 20% 98%;
+    --popover: 222 47% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 200 100% 40%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 200 100% 20%;
+
+    --secondary: 0 60% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 0 60% 25%;
+
+    --accent: 30 80% 55%;
+    --accent-foreground: 222 47% 11%;
+    --accent-light: 30 80% 25%;
+    
+    --success: 142 70% 50%;
+    --success-foreground: 0 0% 100%;
+    
+    --muted: 222 47% 16%;
+    --muted-foreground: 215 16% 63%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 47% 20%;
+    --input: 222 47% 20%;
+    --ring: 200 100% 40%;
+
+    --pin-field: 200 100% 40%;
+    --pin-virtual: 30 80% 55%;
+    --pin-locked: 215 15% 45%;
+  }
+
+  /* High Contrast Mode */
+  [data-contrast="high"] {
+    --background: 0 0% 0%;
+    --foreground: 60 100% 50%;
+    --card: 0 0% 5%;
+    --card-foreground: 60 100% 50%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 60 100% 50%;
+    --primary: 60 100% 50%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 60 100% 50%;
+    --secondary-foreground: 0 0% 0%;
+    --accent: 60 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 60 100% 50%;
+    --border: 60 100% 50%;
+    --input: 0 0% 15%;
+  }
+
+  /* Dark Contrast Mode */
+  [data-contrast="dark"] {
+    --background: 222 47% 8%;
+    --foreground: 210 20% 98%;
+    --card: 222 47% 12%;
+    --card-foreground: 210 20% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-size: calc(16px * var(--text-scale));
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    filter: saturate(var(--saturation-scale));
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Accessibility: Invert Colors */
+  .invert-colors {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  .invert-colors img,
+  .invert-colors video {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  /* Accessibility: Monochrome */
+  .monochrome {
+    filter: grayscale(1);
+  }
+
+  /* Accessibility: Highlight Links */
+  .highlight-links a {
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  /* Accessibility: Highlight Headings */
+  .highlight-headings h1,
+  .highlight-headings h2,
+  .highlight-headings h3,
+  .highlight-headings h4,
+  .highlight-headings h5,
+  .highlight-headings h6 {
+    background-color: hsl(var(--accent) / 0.2);
+    padding: 0.25em 0.5em;
+    border-left: 4px solid hsl(var(--primary));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Bottom Navigation */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-card border-t border-border;
+    @apply flex items-center justify-around h-16 z-50;
+    @apply safe-area-inset-bottom;
+    box-shadow: 0 -4px 20px hsl(var(--foreground) / 0.05);
+  }
+
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center gap-0.5 px-4 py-2;
+    @apply text-muted-foreground transition-colors duration-200;
+    @apply hover:text-primary;
+  }
+
+  .bottom-nav-item.active {
+    @apply text-primary;
+  }
+
+  .bottom-nav-item span {
+    @apply text-xs font-medium;
+  }
+
+  /* Map Marker Pins */
+  .map-pin {
+    @apply w-8 h-8 rounded-full flex items-center justify-center;
+    @apply shadow-md transition-transform duration-200;
+    @apply hover:scale-110 cursor-pointer;
+  }
+
+  .map-pin-field {
+    @apply bg-primary text-primary-foreground;
+  }
+
+  .map-pin-virtual {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .map-pin-locked {
+    @apply bg-muted text-muted-foreground opacity-60;
+  }
+
+  .map-pin-completed {
+    @apply bg-success text-success-foreground;
+  }
+
+  /* Stamp styles */
+  .stamp {
+    @apply relative w-20 h-20 rounded-full flex items-center justify-center;
+    @apply border-4 border-dashed transform rotate-[-5deg];
+    @apply transition-all duration-300;
+  }
+
+  .stamp-collected {
+    @apply border-primary bg-primary/10 text-primary;
+    animation: stamp-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .stamp-empty {
+    @apply border-muted bg-muted/20 text-muted-foreground/50;
+  }
+
+  /* Card styles */
+  .scenario-card {
+    @apply bg-card rounded-xl overflow-hidden shadow-md;
+    @apply border border-border transition-all duration-200;
+    @apply hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* GPS Simulator Toggle */
+  .gps-toggle {
+    @apply fixed top-14 right-4 z-50 bg-card rounded-full;
+    @apply px-4 py-2 shadow-lg border border-border;
+    @apply flex items-center gap-2 text-sm font-medium;
+  }
+
+  /* Safe area padding for mobile */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient text */
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+}
+
+/* Keyframe animations */
+@keyframes stamp-in {
+  0% {
+    transform: scale(2) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.8) rotate(-10deg);
+  }
+  100% {
+    transform: scale(1) rotate(-5deg);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px hsl(var(--success) / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px hsl(var(--success) / 0.7);
+  }
+}
+
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Leaflet overrides */
+.leaflet-container {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: hsl(var(--muted));
+}
+
+.leaflet-popup-content-wrapper {
+  @apply bg-card text-card-foreground rounded-lg shadow-lg;
+}
+
+.leaflet-popup-tip {
+  @apply bg-card;
+}
+
+.leaflet-popup-pane {
+  z-index: 1000 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}

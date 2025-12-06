@@ -1,0 +1,163 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "PlantyMożliwości",
+        "description": "Publiczne API do pobierania danych statystycznych dotyczących platformy PlantyMożliwości",
+        "contact": {
+            "email": "icdev@gpasa.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/stats/events": {
+            "get": {
+                "tags": [
+                    "Statystyki"
+                ],
+                "summary": "Pobierz listę wydarzeń wraz z liczbą rejestracji",
+                "description": "Zwraca listę wydarzeń wraz z liczbą rejestracji. Użyj ?format=csv, aby pobrać dane w formacie CSV. Opcjonalne parametry zapytania: from, to (YYYY-MM-DD).",
+                "operationId": "1b8ee7984ad590ea2036a7bd34564b94",
+                "parameters": [
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "description": "Data rozpoczęcia (YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "Data zakończenia (YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "Format odpowiedzi (json lub csv)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "csv"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista wydarzeń z liczbą rejestracji",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "tytul": {
+                                                "type": "string",
+                                                "example": "Karmienie tygrysa"
+                                            },
+                                            "liczba_rejestracji": {
+                                                "type": "integer",
+                                                "example": 12
+                                            },
+                                            "maks_uczestnikow": {
+                                                "type": "integer",
+                                                "example": 23
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/stats/users": {
+            "get": {
+                "tags": [
+                    "Statystyki"
+                ],
+                "summary": "Get user count grouped by role",
+                "description": "Returns the number of users grouped by their role. Use ?format=csv to download as CSV. Optional query parameters: from, to (YYYY-MM-DD).",
+                "operationId": "5389f201a588bf12ad39dccbb4f25fdb",
+                "parameters": [
+                    {
+                        "name": "from",
+                        "in": "query",
+                        "description": "Start date filter (YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "description": "End date filter (YYYY-MM-DD)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": "Response format (json or csv)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "json",
+                                "csv"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of user counts by role",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "rola": {
+                                                "type": "string",
+                                                "example": "Wolontariusz"
+                                            },
+                                            "liczba_uzytkownikow": {
+                                                "type": "integer",
+                                                "example": 12
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Statystyki",
+            "description": "Statystyki"
+        }
+    ]
+}
