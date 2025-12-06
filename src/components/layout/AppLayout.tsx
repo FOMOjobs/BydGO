@@ -37,7 +37,7 @@ export function AppLayout({ children, hideNav, activeView, setActiveView }: AppL
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <main className={cn('flex-1', !hideNav && 'pb-16')}>
+      <main className={cn('flex-1', !hideNav && 'pb-20')}>
         {children}
       </main>
       {!hideNav && <BottomNav activeView={activeView} setActiveView={setActiveView} />}

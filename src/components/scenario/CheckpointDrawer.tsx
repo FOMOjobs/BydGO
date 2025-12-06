@@ -61,16 +61,16 @@ export function CheckpointDrawer({ path, checkpoint, onClose }: CheckpointDrawer
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-foreground/20 backdrop-blur-sm z-[60]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
           />
 
-          {/* Drawer */}
+          {/* Drawer - highest z-index to always be on top */}
           <motion.div
-            className="fixed inset-x-0 bottom-0 z-50 bg-card rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto" // Increased height to 90vh
+            className="fixed inset-x-0 bottom-0 z-[60] bg-card rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
