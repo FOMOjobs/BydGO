@@ -5,6 +5,10 @@ Zamien zwiedzanie w przygode - zbieraj wirtualne pieczatki, rozwiazuj zagadki i 
 **
 [ TECH STACK ]**
 
+Kod frontendu : /src/
+
+Kod backendu : /
+
 Projekt oparty o WordPress dzialajacy jako CMS oraz silnik aplikacji (Progressive Web App).
 
 Core: WordPress 6.x (Headless / Hybrid mode)
