@@ -9,7 +9,7 @@ Projekt oparty o WordPress dzialajacy jako CMS oraz silnik aplikacji (Progressiv
 
 Core: WordPress 6.x (Headless / Hybrid mode)
 
-Frontend UI: Custom WordPress Theme + Tailwind CSS
+Frontend UI: React App 
 
 Backend/Database: MySQL / MariaDB (Standard WP Structure)
 
@@ -17,26 +17,8 @@ Data Management: Advanced Custom Fields (ACF) - do zarzadzania scenariuszami i p
 
 Maps: Leaflet.js (zintegrowane via WP)
 
-Features: PWA (Service Workers), REST API
+Features: PWA , REST API
 
-**[ STRUKTURA PROJEKTU (WORDPRESS THEME) ]**
-
-wp-content/themes/bydgo-theme/
-|
-|-- assets/
-|   |-- css/         # Skompilowane style Tailwind
-|   |-- js/          # Logika mapy i interakcje w grze
-|   |-- images/      # Statyczne zasoby graficzne
-|
-|-- inc/             # Niestandardowe klasy i funkcje PHP
-|   |-- api/         # Endpointy REST API
-|   |-- gamification/# Logika pieczatek i postepu
-|
-|-- template-parts/  # Komponenty UI wielokrotnego uzytku
-|-- page-templates/  # Widoki konkretnych ekranow gry
-|-- functions.php    # Plik startowy motywu
-|-- style.css        # Deklaracja motywu
-|-- tailwind.config.js # Konfiguracja Tailwind
 
 **[ DEVELOPMENT & INSTALACJA ]**
 
@@ -46,9 +28,7 @@ Konfiguracja WordPress:
 
 Zainstaluj czysta instancje WordPressa.
 
-Skopiuj folder 'bydgo-theme' do katalogu '/wp-content/themes/'.
-
-Budowanie zasobow (Tailwind):
+Budowanie zasobow (react):
 
 Zainstaluj zaleznosci: npm install
 
